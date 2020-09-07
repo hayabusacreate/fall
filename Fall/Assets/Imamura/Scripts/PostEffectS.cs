@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PostEffectS : MonoBehaviour
 {
-    public Material sepia
-        ;
+    public Material sepia;
 
     private void OnRenderImage(RenderTexture src, RenderTexture dest)
     {
