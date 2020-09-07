@@ -5,7 +5,7 @@ using UnityEngine;
 public class ChildInOut : MonoBehaviour
 {
     public bool inout;
-    private bool rock;
+    public bool rock;
     public Child child;
     public bool under;
     // Start is called before the first frame update
@@ -17,14 +17,18 @@ public class ChildInOut : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!inout)
+        if(!under)
         {
-            child.inrock = rock;
+            if (!inout)
+            {
+                child.inrock = rock;
+            }
+            else
+            {
+                child.outrock = rock;
+            }
         }
-        else
-        {
-            child.outrock = rock;
-        }
+
     }
     private void OnTriggerStay(Collider other)
     {

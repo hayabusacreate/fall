@@ -8,6 +8,7 @@ public class Body : MonoBehaviour
     public float far;
     public float hight;
     public float angle;
+    public Player player;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,5 +30,19 @@ public class Body : MonoBehaviour
         far = Mathf.Abs(Vector3.Distance(child.transform.position, parent.transform.position));
         transform.localScale = new Vector3( 0.3f, 1,far );
         transform.position = (parent.transform.position + child.transform.position) / 2;
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.tag=="Ground")
+        {
+            player.moveflag = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Ground")
+        {
+            player.moveflag = false;
+        }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Child : MonoBehaviour
 {
     public GameObject player,head;
-    private float range;
+    public float range;
     public bool inrock,outrock;
     public bool under;
     private float x;
@@ -24,30 +24,33 @@ public class Child : MonoBehaviour
             if((player.GetComponent<Player>().playerType==PlayerType.Right||
                 player.GetComponent<Player>().playerType == PlayerType.Left))
             {
+
                 if (!player.GetComponent<Player>().rock)
                 {
+                    range = 1;
                     if (Input.GetAxis("Horizontal") > 0)
                     {
-                        if (outrock)
+                        if (inrock)
                         {
-                            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, head.transform.position.y, transform.position.z), Time.deltaTime * 10);
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, head.transform.position.y-0.5f, transform.position.z), Time.deltaTime * 10);
+                            //transform.position = new Vector3(x, head.transform.position.y, transform.position.z);
                         }
                         else
                         {
-                            x = Input.GetAxis("Horizontal") * player.gameObject.GetComponent<Player>().speed;
-                            transform.position += new Vector3(x, 0, 0);
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(head.transform.position.x + range, head.transform.position.y-0.5f, transform.position.z), Time.deltaTime * 10);
+                            //transform.localPosition = new Vector3(head.transform.position.x + range, head.transform.position.y, transform.position.z);
                         }
                     }
                     if (Input.GetAxis("Horizontal") < 0)
                     {
                         if (inrock)
                         {
-                            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, head.transform.position.y, transform.position.z), Time.deltaTime * 10);
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, head.transform.position.y-0.5f, transform.position.z), Time.deltaTime * 10);
                             //transform.position = new Vector3(x, head.transform.position.y, transform.position.z);
                         }
                         else
                         {
-                            transform.position = Vector3.Lerp(transform.position, new Vector3(head.transform.position.x + range, head.transform.position.y, transform.position.z), Time.deltaTime * 10);
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(head.transform.position.x + range, head.transform.position.y-0.5f, transform.position.z), Time.deltaTime * 10);
                             //transform.localPosition = new Vector3(head.transform.position.x + range, head.transform.position.y, transform.position.z);
                         }
                     }
@@ -55,17 +58,20 @@ public class Child : MonoBehaviour
                     {
                         if (inrock)
                         {
-                            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, head.transform.position.y, transform.position.z), Time.deltaTime * 10);
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, head.transform.position.y-0.5f, transform.position.z), Time.deltaTime * 10);
                             //transform.position = new Vector3(x, head.transform.position.y, transform.position.z);
                         }
                         else
                         {
-                            transform.position = Vector3.Lerp(transform.position, new Vector3(head.transform.position.x + range, head.transform.position.y, transform.position.z), Time.deltaTime * 10);
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(head.transform.position.x + range, head.transform.position.y-0.5f, transform.position.z), Time.deltaTime * 10);
                             //transform.localPosition = new Vector3(head.transform.position.x + range, head.transform.position.y, transform.position.z);
                         }
                     }
                 }else
                 {
+                    x = Input.GetAxis("Horizontal") * player.gameObject.GetComponent<Player>().speed;
+                    transform.position += new Vector3(x, 0, 0);
+                    transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, head.transform.position.y-0.5f, transform.position.z), 1);
 
                 }
 
@@ -73,15 +79,25 @@ public class Child : MonoBehaviour
             }
             else
             {
-                transform.position = new Vector3(head.transform.position.x, transform.position.y, transform.position.z);
-                if (inrock)
+                if(!player.GetComponent<Player>().rock)
                 {
-                    //transform.position = new Vector3(x, head.transform.position.y, transform.position.z);
+                    range = 1;
+                    if (inrock)
+                    {
+                        //transform.position = new Vector3(x, head.transform.position.y, transform.position.z);
 
+                    }
+                    else
+                    {
+                        transform.position = new Vector3(head.transform.position.x,head.transform.position.y+range, transform.position.z);
+                    }
                 }
                 else
                 {
-                    //transform.position = new Vector3(transform.position.x, head.transform.position.y, transform.position.z);
+
+                    x = Input.GetAxis("Horizontal") * player.gameObject.GetComponent<Player>().speed;
+                    transform.position += new Vector3(x, 0, 0);
+                    transform.position = Vector3.Lerp(transform.position, new Vector3(head.transform.position.x, head.transform.position.y+range, transform.position.z), 1);
                 }
             }
 

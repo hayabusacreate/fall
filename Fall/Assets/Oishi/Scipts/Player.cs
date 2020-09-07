@@ -22,6 +22,9 @@ public class Player : MonoBehaviour
     private bool rockflag;
     public Child childscr;
     public bool rock;
+    private bool roolflag;
+    private float range;
+    public bool moveflag;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +41,7 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R))
         {
             rock = !rock;
+            child.GetComponent<Child>().range = Vector3.Distance(child.transform.position, child.GetComponent<Child>().head.transform.position);
         }
         if(Input.GetKeyDown(KeyCode.S) && !child.GetComponent<Child>().under)
         {
@@ -50,6 +54,11 @@ public class Player : MonoBehaviour
         if (playerType==PlayerType.Right)
         {
             pos.x = Input.GetAxis("Horizontal") * speed;
+            range = Mathf.Abs(Vector3.Distance(body.transform.position, child.transform.position));
+            if (range > 1.2&&!rock)
+            {
+                pos.x += speed/3;
+            }
             if (Input.GetKey(KeyCode.Q)&&(!rightroll&&!leftroll))
             {
                 leftroll = true;
@@ -128,6 +137,7 @@ public class Player : MonoBehaviour
             }
             else
             {
+                if(!moveflag)
                 pos.y -= Time.deltaTime ;
             }
 
@@ -135,6 +145,11 @@ public class Player : MonoBehaviour
         if (playerType == PlayerType.Left)
         {
             pos.x = Input.GetAxis("Horizontal") * speed;
+            range = Mathf.Abs(Vector3.Distance(transform.position, child.transform.position));
+            if (range > 1.2 && !rock)
+            {
+                pos.x -= speed / 3;
+            }
             if (Input.GetKey(KeyCode.Q) && (!rightroll && !leftroll))
             {
                 leftroll = true;
@@ -212,13 +227,19 @@ public class Player : MonoBehaviour
             }
             else
             {
-                pos.y -= Time.deltaTime;
+                if (!moveflag)
+                    pos.y -= Time.deltaTime;
             }
 
         }
         if (playerType == PlayerType.Up)
         {
             pos.x = Input.GetAxis("Horizontal") * speed;
+            range = Mathf.Abs(Vector3.Distance(transform.position, child.transform.position));
+            if (range > 1.2 && !rock)
+            {
+                pos.y += speed / 3;
+            }
             if (Input.GetKey(KeyCode.Q) && (!rightroll && !leftroll))
             {
                 child.transform.parent = gameObject.transform;
@@ -297,13 +318,19 @@ public class Player : MonoBehaviour
             }
             else
             {
-                pos.y -= Time.deltaTime;
+                if (!moveflag)
+                    pos.y -= Time.deltaTime;
             }
 
         }
         if (playerType == PlayerType.Down)
         {
             pos.x = Input.GetAxis("Horizontal") * speed;
+            range = Mathf.Abs(Vector3.Distance(transform.position, child.transform.position));
+            if (range > 1.2 && !rock)
+            {
+                pos.y -= speed / 3;
+            }
             if (Input.GetKey(KeyCode.Q) && (!rightroll && !leftroll))
             {
                 child.transform.parent = gameObject.transform;
@@ -381,11 +408,11 @@ public class Player : MonoBehaviour
             }
             else
             {
-                pos.y -= Time.deltaTime;
+                if (!moveflag)
+                    pos.y -= Time.deltaTime;
             }
 
         }
-
         transform.position += pos;
         //rigidbody.AddForce(pos.x, pos.y, pos.z);
     }
