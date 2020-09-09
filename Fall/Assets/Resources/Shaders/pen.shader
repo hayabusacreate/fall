@@ -85,7 +85,7 @@ Shader "pen"
 			float4 frag(v2f i) : SV_Target
 			{
 				float2 screenUV = i.uv * _ScreenParams.xy;
-				i.uv += (float2(perlin(float3(screenUV,0) * 5), perlin(float3(screenUV, 100) * 5)) - 0.5) * 0.002;
+				i.uv += (float2(perlin(float3(screenUV, 0) * 5), perlin(float3(screenUV,  100) * 5)) - 0.5) * 0.0025;
 				float4 col = tex2D(_MainTex, i.uv);
 
 				float2 pixelSize = _ScreenParams.zw - 0;
