@@ -23,9 +23,10 @@ public class Body : MonoBehaviour
 
         Quaternion lookRotation = Quaternion.LookRotation(child.transform.position - transform.position, Vector3.up);
 
+        //lookRotation.y = 0;
+        //lookRotation.z = 0;
 
-
-        transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 1f);
+        transform.rotation = Quaternion.Lerp(transform.rotation,lookRotation, 1);
 
         far = Mathf.Abs(Vector3.Distance(child.transform.position, parent.transform.position));
         transform.localScale = new Vector3( 0.3f, 1,far );

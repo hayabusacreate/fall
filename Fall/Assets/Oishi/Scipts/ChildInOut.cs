@@ -11,7 +11,7 @@ public class ChildInOut : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        rock = false;
     }
 
     // Update is called once per frame
@@ -39,6 +39,9 @@ public class ChildInOut : MonoBehaviour
             {
                 child.under = true;
             }
+        }else
+        {
+            rock = false;
         }
     }
     private void OnTriggerExit(Collider other)

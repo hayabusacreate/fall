@@ -23,7 +23,7 @@ public class Map : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<Player>();
+        //player = GameObject.Find("Player").GetComponent<Player>();
         maps = new Dictionary<int, bool>();
         maplog = new Dictionary<int, GameObject>();
         map = GameObject.Find("MapCreate").GetComponent<MapCreate>();

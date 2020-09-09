@@ -68,7 +68,7 @@ public class SceneChange : MonoBehaviour
         audio = GetComponent<AudioSource>();
         if (scene == Scene.Title)
         {
-            UI = GameObject.Find("AA");
+            //UI = GameObject.Find("AA");
         }
         if (scene == Scene.GamePlay)
         {
@@ -81,14 +81,14 @@ public class SceneChange : MonoBehaviour
                     allflag = false;
                 }
             }
-            hinoko = GameObject.Find("hinoko");
-            hinoko.SetActive(false);
-            slider = GameObject.Find("Count").GetComponent<Slider>();
-            player = GameObject.Find("Player").GetComponent<Player>();
+            //hinoko = GameObject.Find("hinoko");
+            //hinoko.SetActive(false);
+            //slider = GameObject.Find("Count").GetComponent<Slider>();
+            //player = GameObject.Find("Player").GetComponent<Player>();
             mapCreate = GameObject.Find("MapCreate").GetComponent<MapCreate>();
-            slider.minValue = 0;
-            slider.maxValue = 100;
-            UI = GameObject.Find("AA");
+            //slider.minValue = 0;
+            //slider.maxValue = 100;
+            //UI = GameObject.Find("AA");
             mapcount = 20;
             mapnum = mapCreate.ReturnMapnum();
             stagenum = mapCreate.ReturnMapnum();
@@ -103,23 +103,23 @@ public class SceneChange : MonoBehaviour
         {
             allflag = true;
             //serect.SetActive(true);
-            for (int i = 1; i < clear.Count; i++)
-            {
-                if (!clear[i])
-                {
-                    allflag = false;
-                }
-            }
-            if (allflag)
-            {
-                special.SetActive(true);
-            }
-            else
-            {
-                special.SetActive(false);
-            }
-            UI = GameObject.Find("AA");
-            UI.SetActive(false);
+            //for (int i = 1; i < clear.Count; i++)
+            //{
+            //    if (!clear[i])
+            //    {
+            //        allflag = false;
+            //    }
+            //}
+            //if (allflag)
+            //{
+            //    special.SetActive(true);
+            //}
+            //else
+            //{
+            //    special.SetActive(false);
+            //}
+            //UI = GameObject.Find("AA");
+            //UI.SetActive(false);
             mapCreate = GameObject.Find("MapCreate").GetComponent<MapCreate>();
             mapnum = mapCreate.ReturnMapnum();
             stagenum = mapCreate.ReturnMapnum();
@@ -130,16 +130,16 @@ public class SceneChange : MonoBehaviour
             }
             pl.transform.position = new Vector3(mapnum * 5, pl.transform.position.y, pl.transform.position.z);
             mapCreate.ChangeMap(mapnum);
-            if (title)
-            {
-                startobj.SetActive(true);
-                count2 = 10;
-            }
-            if (!title)
-            {
-                startobj.SetActive(true);
-                title = true;
-            }
+            //if (title)
+            //{
+            //    startobj.SetActive(true);
+            //    count2 = 10;
+            //}
+            //if (!title)
+            //{
+            //    startobj.SetActive(true);
+            //    title = true;
+            //}
         }
     }
 
@@ -172,8 +172,8 @@ public class SceneChange : MonoBehaviour
                 if (endflag)
                 {
                     count++;
-                    endobj.SetActive(true);
-                    UI.SetActive(false);
+                    //endobj.SetActive(true);
+                    //UI.SetActive(false);
 
                 }
                 if (count > 60)
@@ -207,75 +207,75 @@ public class SceneChange : MonoBehaviour
                 if (endflag)
                 {
                     count++;
-                    endobj.SetActive(true);
-                    UI.SetActive(false);
+                    //endobj.SetActive(true);
+                    //UI.SetActive(false);
                     if (!clearflag)
                     {
                     }
 
                 }
 
-                if (creaflag)
-                {
-                    if ((((float)mapCreate.maxblock - (float)mapCreate.blocks) / (float)mapCreate.maxblock) * 100 == 100)
-                    {
-                        hinoko.SetActive(true);
+                //if (creaflag)
+                //{
+                //    if ((((float)mapCreate.maxblock - (float)mapCreate.blocks) / (float)mapCreate.maxblock) * 100 == 100)
+                //    {
+                //        hinoko.SetActive(true);
 
-                        clear[mapCreate.ReturnMapnum()] = true;
-                        allflag = true;
-                        //serect.SetActive(true);
-                        for (int i = 1; i < clear.Count; i++)
-                        {
-                            if (!clear[i])
-                            {
-                                allflag = false;
-                            }
-                        }
-                        if (allflag)
-                        {
-                            allobj.SetActive(true);
-                        }
-                        else
-                        {
-                            gold.SetActive(true);
-                        }
-                        if (Input.GetKeyDown(KeyCode.Space) || (Input.GetKeyDown("joystick button 0")))
-                        {
-                            clearflag = true;
-                            count = 0;
-                            endflag = true;
-                        }
-                    }
-                    else
-                    {
-                        endflag = true;
-                    }
+                //        clear[mapCreate.ReturnMapnum()] = true;
+                //        allflag = true;
+                //        //serect.SetActive(true);
+                //        for (int i = 1; i < clear.Count; i++)
+                //        {
+                //            if (!clear[i])
+                //            {
+                //                allflag = false;
+                //            }
+                //        }
+                //        if (allflag)
+                //        {
+                //            allobj.SetActive(true);
+                //        }
+                //        else
+                //        {
+                //            gold.SetActive(true);
+                //        }
+                //        if (Input.GetKeyDown(KeyCode.Space) || (Input.GetKeyDown("joystick button 0")))
+                //        {
+                //            clearflag = true;
+                //            count = 0;
+                //            endflag = true;
+                //        }
+                //    }
+                //    else
+                //    {
+                //        endflag = true;
+                //    }
 
 
-                }
-                if (Input.GetKeyDown(KeyCode.I))
-                {
-                    ui = true;
-                }
-                if (ui)
-                {
-                    over.SetActive(false);
-                    bronze.SetActive(false);
-                    silver.SetActive(false);
-                    gold.SetActive(false);
-                    serect.SetActive(false);
-                }
+                //}
+                //if (Input.GetKeyDown(KeyCode.I))
+                //{
+                //    ui = true;
+                //}
+                //if (ui)
+                //{
+                //    over.SetActive(false);
+                //    bronze.SetActive(false);
+                //    silver.SetActive(false);
+                //    gold.SetActive(false);
+                //    serect.SetActive(false);
+                //}
                 if (Input.GetKeyDown(KeyCode.Space) || (Input.GetKeyDown("joystick button 6")))
                 {
-                    clearflag = true;
-                    count = 0;
-                    endflag = true;
-                    mapnum = mapcount;
+                    //clearflag = true;
+                    //count = 0;
+                    //endflag = true;
+                    //mapnum = mapcount;
                 }
 
-                if (Input.GetKeyDown(KeyCode.R) || (Input.GetKeyDown("joystick button 7")))
+                if (Input.GetKeyDown(KeyCode.I) || (Input.GetKeyDown("joystick button 7")))
                 {
-                    SceneManager.LoadScene("NewStage" + mapCreate.ReturnMapnum());
+                    SceneManager.LoadScene("Stage" + mapCreate.ReturnMapnum());
                 }
                 if (count > 60)
                 {
@@ -292,13 +292,13 @@ public class SceneChange : MonoBehaviour
                         {
                             deathcount = 0;
                             mapCreate.ChangeMap(mapnum);
-                            SceneManager.LoadScene("NewStage" + mapCreate.ReturnMapnum());
+                            SceneManager.LoadScene("Stage" + mapCreate.ReturnMapnum());
                         }
 
                     }
                     else
                     {
-                        SceneManager.LoadScene("NewStage" + mapCreate.ReturnMapnum());
+                        SceneManager.LoadScene("Stage" + mapCreate.ReturnMapnum());
                         deathcount++;
                     }
 
@@ -360,11 +360,11 @@ public class SceneChange : MonoBehaviour
                     }
                     if (Input.GetKey(KeyCode.Space) || (Input.GetKeyDown("joystick button 0")))
                     {
-                        UI.SetActive(false);
-                        if (!endflag)
-                        {
-                            audio.PlayOneShot(sound1);
-                        }
+                        //UI.SetActive(false);
+                        //if (!endflag)
+                        //{
+                        //    audio.PlayOneShot(sound1);
+                        //}
                         endflag = true;
 
 
@@ -372,11 +372,11 @@ public class SceneChange : MonoBehaviour
                     if (endflag)
                     {
                         count++;
-                        endobj.SetActive(true);
+                        //endobj.SetActive(true);
                     }
                     if (count > 60)
                     {
-                        SceneManager.LoadScene("NewStage" + mapCreate.ReturnMapnum());
+                        SceneManager.LoadScene("Stage" + mapCreate.ReturnMapnum());
                     }
                 }
 
@@ -396,7 +396,7 @@ public class SceneChange : MonoBehaviour
             case Scene.Load:
                 for (int i = 0; i < map; i++)
                 {
-                    mapCreate.LoadMap(Resources.Load("new map" + i) as TextAsset, i);
+                    mapCreate.LoadMap(Resources.Load("stage" + i) as TextAsset, i);
                     clear[i] = false;
                 }
                 SceneManager.LoadScene("Title");

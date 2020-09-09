@@ -9,10 +9,13 @@ public class Child : MonoBehaviour
     public bool inrock,outrock;
     public bool under;
     private float x;
+    public float distance;
     // Start is called before the first frame update
     void Start()
     {
         range = 1;
+        inrock = false;
+        outrock = false;
     }
 
     // Update is called once per frame
@@ -24,6 +27,7 @@ public class Child : MonoBehaviour
             if((player.GetComponent<Player>().playerType==PlayerType.Right||
                 player.GetComponent<Player>().playerType == PlayerType.Left))
             {
+                distance = Mathf.Abs(Vector3.Distance(transform.position, head.transform.position));
 
                 if (!player.GetComponent<Player>().rock)
                 {
@@ -32,12 +36,26 @@ public class Child : MonoBehaviour
                     {
                         if (inrock)
                         {
-                            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, head.transform.position.y-0.5f, transform.position.z), Time.deltaTime * 10);
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, head.transform.position.y-0.5f, head.transform.position.z), 1);
+                            distance = Mathf.Abs(Vector3.Distance(transform.position, head.transform.position));
+                            if (distance < 1f)
+                            {
+                                x = player.GetComponent<Player>().pos.x;
+                                transform.position += new Vector3(x, 0, 0);
+                                transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, head.transform.position.y - 0.5f, head.transform.position.z), 1);
+                            }
                             //transform.position = new Vector3(x, head.transform.position.y, transform.position.z);
                         }
                         else
                         {
-                            transform.position = Vector3.Lerp(transform.position, new Vector3(head.transform.position.x + range, head.transform.position.y-0.5f, transform.position.z), Time.deltaTime * 10);
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(head.transform.position.x + range, head.transform.position.y-0.5f, head.transform.position.z), Time.deltaTime * 10);
+                            distance = Mathf.Abs(Vector3.Distance(transform.position, head.transform.position));
+                            if (distance < 1f)
+                            {
+                                x = player.GetComponent<Player>().pos.x;
+                                transform.position += new Vector3(x, 0, 0);
+                                transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, head.transform.position.y - 0.5f, head.transform.position.z), 1);
+                            }
                             //transform.localPosition = new Vector3(head.transform.position.x + range, head.transform.position.y, transform.position.z);
                         }
                     }
@@ -45,12 +63,26 @@ public class Child : MonoBehaviour
                     {
                         if (inrock)
                         {
-                            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, head.transform.position.y-0.5f, transform.position.z), Time.deltaTime * 10);
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, head.transform.position.y-0.5f, transform.position.z), 1);
+                            distance = Mathf.Abs(Vector3.Distance(transform.position, head.transform.position));
+                            if (distance < 1f)
+                            {
+                                x = player.GetComponent<Player>().pos.x;
+                                transform.position += new Vector3(x, 0, 0);
+                                transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, head.transform.position.y - 0.5f, head.transform.position.z), 1);
+                            }
                             //transform.position = new Vector3(x, head.transform.position.y, transform.position.z);
                         }
                         else
                         {
-                            transform.position = Vector3.Lerp(transform.position, new Vector3(head.transform.position.x + range, head.transform.position.y-0.5f, transform.position.z), Time.deltaTime * 10);
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(head.transform.position.x + range, head.transform.position.y-0.5f, head.transform.position.z), Time.deltaTime * 10);
+                            distance = Mathf.Abs(Vector3.Distance(transform.position, head.transform.position));
+                            if (distance < 1f)
+                            {
+                                x = player.GetComponent<Player>().pos.x;
+                                transform.position += new Vector3(x, 0, 0);
+                                transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, head.transform.position.y - 0.5f, head.transform.position.z), 1);
+                            }
                             //transform.localPosition = new Vector3(head.transform.position.x + range, head.transform.position.y, transform.position.z);
                         }
                     }
@@ -58,20 +90,21 @@ public class Child : MonoBehaviour
                     {
                         if (inrock)
                         {
-                            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, head.transform.position.y-0.5f, transform.position.z), Time.deltaTime * 10);
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, head.transform.position.y-0.5f, head.transform.position.z), 1);
                             //transform.position = new Vector3(x, head.transform.position.y, transform.position.z);
                         }
                         else
                         {
-                            transform.position = Vector3.Lerp(transform.position, new Vector3(head.transform.position.x + range, head.transform.position.y-0.5f, transform.position.z), Time.deltaTime * 10);
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(head.transform.position.x + range, head.transform.position.y-0.5f, head.transform.position.z), Time.deltaTime*10);
                             //transform.localPosition = new Vector3(head.transform.position.x + range, head.transform.position.y, transform.position.z);
                         }
                     }
                 }else
                 {
-                    x = Input.GetAxis("Horizontal") * player.gameObject.GetComponent<Player>().speed;
+                    x = player.GetComponent<Player>().pos.x;
+                    
                     transform.position += new Vector3(x, 0, 0);
-                    transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, head.transform.position.y-0.5f, transform.position.z), 1);
+                    transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, head.transform.position.y-0.5f, head.transform.position.z), 1);
 
                 }
 
