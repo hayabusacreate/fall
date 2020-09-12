@@ -10,6 +10,7 @@ public class Block : MonoBehaviour
     public bool rightmove, leftmove, upmove, downmove;
     public bool righthuck, lefthuck, uphuck, downhuck;
     private SceneChange sceneChange;
+    public bool playerrayd;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,45 +37,11 @@ public class Block : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.playerType==PlayerType.Right)
-        {
-            if(!leftmove&&righthuck)
-            {
-                if(player.rock&&player.pos.x<0)
-                {
-                    transform.position += new Vector3(player.pos.x, 0, 0);
-                }
-            }
-            if (!rightmove && lefthuck)
-            {
-                if (player.rock && player.pos.x > 0)
-                {
-                    transform.position += new Vector3(player.pos.x, 0, 0);
-                }
-            }
-        }
-        if (player.playerType == PlayerType.Left)
-        {
-            if (!rightmove && lefthuck)
-            {
-                if (player.rock && player.pos.x > 0)
-                {
-                    transform.position += new Vector3(player.pos.x, 0, 0);
-                }
-            }
-            if (!leftmove && righthuck)
-            {
-                if (player.rock && player.pos.x < 0)
-                {
-                    transform.position += new Vector3(player.pos.x, 0, 0);
-                }
-            }
-        }
         if (player.playerType == PlayerType.UpR)
         {
-            if (!downmove &&uphuck)
+            if (!downmove && uphuck)
             {
-                if (player.rock&&player.pos.y<0)
+                if (player.rock && player.pos.y < 0)
                 {
                     transform.position += new Vector3(0, player.pos.y, 0);
                 }
@@ -90,6 +57,49 @@ public class Block : MonoBehaviour
                 }
             }
         }
+        if (!player.jumpFlag)
+        {
+            playerrayd = true;
+        }
+        if(!playerrayd)
+        {
+            if (player.playerType == PlayerType.Right)
+            {
+                if (!leftmove && righthuck)
+                {
+                    if (player.rock && player.pos.x < 0)
+                    {
+                        transform.position += new Vector3(player.pos.x, 0, 0);
+                    }
+                }
+                if (!rightmove && lefthuck)
+                {
+                    if (player.rock && player.pos.x > 0)
+                    {
+                        transform.position += new Vector3(player.pos.x, 0, 0);
+                    }
+                }
+            }
+            if (player.playerType == PlayerType.Left)
+            {
+                if (!rightmove && lefthuck)
+                {
+                    if (player.rock && player.pos.x > 0)
+                    {
+                        transform.position += new Vector3(player.pos.x, 0, 0);
+                    }
+                }
+                if (!leftmove && righthuck)
+                {
+                    if (player.rock && player.pos.x < 0)
+                    {
+                        transform.position += new Vector3(player.pos.x, 0, 0);
+                    }
+                }
+            }
+
+        }
+
     }
     private void OnCollisionStay(Collision collision)
     {
@@ -100,6 +110,23 @@ public class Block : MonoBehaviour
                 sceneChange.endflag = true;
             }
         }
+        if(type=="1")
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                playerrayd = true;
+            }
+        }
 
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (type == "1")
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                playerrayd = false;
+            }
+        }
     }
 }

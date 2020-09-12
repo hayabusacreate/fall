@@ -44,8 +44,6 @@ public class Child : MonoBehaviour
                                 transform.position += new Vector3(x, 0, 0);
                                 transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, head.transform.position.y - 0.5f, head.transform.position.z), 1);
                             }
-                            //transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, head.transform.position.y - 0.5f, head.transform.position.z), 1);
-                            //transform.position = new Vector3(x, head.transform.position.y, transform.position.z);
                         }
                         else
                         {
@@ -57,7 +55,6 @@ public class Child : MonoBehaviour
                                 transform.position += new Vector3(x, 0, 0);
                                 transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, head.transform.position.y - 0.5f, head.transform.position.z), 1);
                             }
-                            //transform.localPosition = new Vector3(head.transform.position.x + range, head.transform.position.y, transform.position.z);
                         }
                     }
                     if (Input.GetAxis("Horizontal") < 0)
@@ -208,6 +205,7 @@ public class Child : MonoBehaviour
                     if (inrock)
                     {
                         //transform.position = new Vector3(x, head.transform.position.y, transform.position.z);
+                        transform.position = new Vector3(head.transform.position.x + 0.5f, head.transform.position.y + range, transform.position.z);
 
                     }
                     else
@@ -231,6 +229,7 @@ public class Child : MonoBehaviour
                     if (inrock)
                     {
                         //transform.position = new Vector3(x, head.transform.position.y, transform.position.z);
+                        transform.position = new Vector3(head.transform.position.x - 0.5f, head.transform.position.y + range, transform.position.z);
 
                     }
                     else

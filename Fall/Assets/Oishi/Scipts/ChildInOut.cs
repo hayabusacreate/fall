@@ -29,6 +29,16 @@ public class ChildInOut : MonoBehaviour
             {
                 child.outrock = rock;
             }
+        }else
+        {
+            if (under)
+            {
+                child.under = rock;
+            }
+            if (up)
+            {
+                child.up = rock;
+            }
         }
 
     }
@@ -48,15 +58,19 @@ public class ChildInOut : MonoBehaviour
             //    rock = false;
             //}
             rock = true;
-            if (!inout)
+            if (!under && !up)
             {
-                child.GetComponent<Child>().inblock = other.gameObject.GetComponent<Block>();
+                if (!inout)
+                {
+                    child.GetComponent<Child>().inblock = other.gameObject.GetComponent<Block>();
+                    child.inrock = rock;
+                }
+                else
+                {
+                    child.GetComponent<Child>().outblock = other.gameObject.GetComponent<Block>();
+                    child.outrock = rock;
+                }
             }
-            else
-            {
-                child.GetComponent<Child>().outblock = other.gameObject.GetComponent<Block>();
-            }
-
             if (under)
             {
                 child.under = true;
@@ -65,6 +79,7 @@ public class ChildInOut : MonoBehaviour
             {
                 child.up = true;
             }
+
         }
 
 
