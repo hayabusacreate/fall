@@ -207,7 +207,7 @@ public class SceneChange : MonoBehaviour
                 if (endflag)
                 {
                     count++;
-                    //endobj.SetActive(true);
+                    endobj.SetActive(true);
                     //UI.SetActive(false);
                     if (!clearflag)
                     {
@@ -265,8 +265,9 @@ public class SceneChange : MonoBehaviour
                 //    gold.SetActive(false);
                 //    serect.SetActive(false);
                 //}
-                if (Input.GetKeyDown(KeyCode.Space) || (Input.GetKeyDown("joystick button 6")))
+                if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 6"))&&endflag)
                 {
+                    SceneManager.LoadScene("StageSerect");
                     //clearflag = true;
                     //count = 0;
                     //endflag = true;
@@ -277,32 +278,32 @@ public class SceneChange : MonoBehaviour
                 {
                     SceneManager.LoadScene("Stage" + mapCreate.ReturnMapnum());
                 }
-                if (count > 60)
-                {
-                    if (clearflag)
-                    {
-                        mapnum++;
-                        inout = false;
-                        if (mapnum > mapcount)
-                        {
-                            mapnum = mapcount;
-                            SceneManager.LoadScene("StageSerect");
-                        }
-                        else
-                        {
-                            deathcount = 0;
-                            mapCreate.ChangeMap(mapnum);
-                            SceneManager.LoadScene("Stage" + mapCreate.ReturnMapnum());
-                        }
+                //if (count > 60)
+                //{
+                //    if (clearflag)
+                //    {
+                //        mapnum++;
+                //        inout = false;
+                //        if (mapnum > mapcount)
+                //        {
+                //            mapnum = mapcount;
+                //            SceneManager.LoadScene("StageSerect");
+                //        }
+                //        else
+                //        {
+                //            deathcount = 0;
+                //            mapCreate.ChangeMap(mapnum);
+                //            SceneManager.LoadScene("Stage" + mapCreate.ReturnMapnum());
+                //        }
 
-                    }
-                    else
-                    {
-                        SceneManager.LoadScene("Stage" + mapCreate.ReturnMapnum());
-                        deathcount++;
-                    }
+                //    }
+                //    else
+                //    {
+                //        SceneManager.LoadScene("Stage" + mapCreate.ReturnMapnum());
+                //        deathcount++;
+                //    }
 
-                }
+                //}
                 break;
             case Scene.StageSelect:
                 count2 += Time.deltaTime;

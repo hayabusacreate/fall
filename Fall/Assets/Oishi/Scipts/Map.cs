@@ -45,7 +45,7 @@ public class Map : MonoBehaviour
         {
             for (int x = 0; x < width; x++)
             {
-                GameObject gameObject = Instantiate(block, new Vector3(-x, -transform.position.y - y, 0), Quaternion.identity);
+                GameObject gameObject = Instantiate(block, new Vector3(x-9.5f, -transform.position.y - y+6, 0), Quaternion.identity);
                 gameObject.GetComponent<Block>().type = csvDatas[y][x];
             }
         }

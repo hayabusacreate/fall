@@ -8,6 +8,8 @@ public class ChildInOut : MonoBehaviour
     public bool rock;
     public Child child;
     public bool under;
+    public bool up;
+    public Player player;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +19,7 @@ public class ChildInOut : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!under)
+        if (!under && !up)
         {
             if (!inout)
             {
@@ -32,26 +34,53 @@ public class ChildInOut : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag!="Player")
+        if (other.gameObject.tag == "Ground")
         {
+            //if (other.gameObject.GetComponent<Block>().leftmove && player.playerType == PlayerType.Right ||
+            //    other.gameObject.GetComponent<Block>().rightmove && player.playerType == PlayerType.Left ||
+            //    other.gameObject.GetComponent<Block>().downmove && player.playerType == PlayerType.UpL ||
+            //    other.gameObject.GetComponent<Block>().downmove && player.playerType == PlayerType.UpR)
+            //{
+            //    rock = true;
+            //}
+            //else
+            //{
+            //    rock = false;
+            //}
             rock = true;
-            if(under)
+            if (!inout)
+            {
+                child.GetComponent<Child>().inblock = other.gameObject.GetComponent<Block>();
+            }
+            else
+            {
+                child.GetComponent<Child>().outblock = other.gameObject.GetComponent<Block>();
+            }
+
+            if (under)
             {
                 child.under = true;
             }
-        }else
-        {
-            rock = false;
+            if (up)
+            {
+                child.up = true;
+            }
         }
+
+
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag != "Player")
+        if (other.gameObject.tag == "Ground")
         {
             rock = false;
             if (under)
             {
                 child.under = false;
+            }
+            if (up)
+            {
+                child.up = false;
             }
         }
     }

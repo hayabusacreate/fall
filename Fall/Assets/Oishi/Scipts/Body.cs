@@ -9,6 +9,7 @@ public class Body : MonoBehaviour
     public float hight;
     public float angle;
     public Player player;
+    public bool under, up;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,21 +30,23 @@ public class Body : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation,lookRotation, 1);
 
         far = Mathf.Abs(Vector3.Distance(child.transform.position, parent.transform.position));
-        transform.localScale = new Vector3( 0.3f, 1,far );
+        transform.localScale = new Vector3( 0.3f, 1,far-1 );
         transform.position = (parent.transform.position + child.transform.position) / 2;
     }
-    private void OnTriggerStay(Collider other)
+    private void OnCollisionStay(Collision collision)
     {
-        if(other.gameObject.tag=="Ground")
+        if(collision.gameObject.tag=="Ground")
         {
-            player.moveflag = true;
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Ground")
-        {
-            player.moveflag = false;
+            if (player.rightmove)
+            {
+                player.rightmove = false;
+                player.unrightroll = true;
+            }
+            if (player.leftmove)
+            {
+                player.leftroll = false;
+                player.unleftroll = true;
+            }
         }
     }
 }
