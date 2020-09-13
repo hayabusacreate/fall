@@ -394,6 +394,8 @@ MonoBehaviour:
   allflag: 0
   allobj: {fileID: 0}
   special: {fileID: 0}
+  open: {fileID: 1316294819}
+  close: {fileID: 1566007339}
 --- !u!4 &438466665
 Transform:
   m_ObjectHideFlags: 0
@@ -544,6 +546,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40efde47abc9ae9439bf5fe1066fd975, type: 3}
+--- !u!1 &1316294819 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6579197534659007785, guid: 40efde47abc9ae9439bf5fe1066fd975,
+    type: 3}
+  m_PrefabInstance: {fileID: 1316294818}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1545268534 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1951974692395138285, guid: bfd844d54f22ad844a780e459d17de29,
@@ -688,6 +696,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 158374bfe3e2600468441f2726f9808f, type: 3}
+--- !u!1 &1566007339 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 907670837093565851, guid: 158374bfe3e2600468441f2726f9808f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1566007338}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1605914099
 GameObject:
   m_ObjectHideFlags: 0

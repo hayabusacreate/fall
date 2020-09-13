@@ -176,12 +176,13 @@ public class SceneChange : MonoBehaviour
                 }
                 if (endflag)
                 {
+                    close.SetActive(true);
                     count++;
                     //endobj.SetActive(true);
                     //UI.SetActive(false);
 
                 }
-                if (count > 60)
+                if (close.GetComponent<wipeTex>().closed)
                 {
                     SceneManager.LoadScene("StageSerect");
 
