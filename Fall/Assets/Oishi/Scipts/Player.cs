@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     public bool rock;
     private bool roolflag;
     private float range;
-    public bool moveflag, rightmove, leftmove,upmove,downmove;
+    public bool moveflag, rightmove, leftmove,upmove,downmove,rockmove;
     // Start is called before the first frame update
     void Start()
     {
@@ -110,7 +110,8 @@ public class Player : MonoBehaviour
             if ((rock && child.GetComponent<Child>().inrock && pos.x < 0 &&child.GetComponent<Child>().inblock.GetComponent<Block>().leftmove)||
                 (rock && child.GetComponent<Child>().outrock && pos.x > 0&& child.GetComponent<Child>().outblock.GetComponent<Block>().rightmove)
                 || (leftmove && pos.x < 0) || (rightmove && pos.x > 0)||(downmove==false&&jumpFlag&&rockflag)||
-                ((rock && child.GetComponent<Child>().inrock && pos.x < 0 && child.GetComponent<Child>().inblock.GetComponent<Block>().playerrayd)))
+                ((rock && child.GetComponent<Child>().inrock && pos.x < 0 && child.GetComponent<Child>().inblock.GetComponent<Block>().playerrayd))||
+                (rockmove&&pos.x>0))
             {
                 pos.x = 0;
             }

@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: aa3befa9211449e43b9f9d8f0dbb5a0a
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: KH Dot Kodenmachou 12 Ko
+  fontNames:
+  - KH Dot Kodenmachou 12 Ko
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
