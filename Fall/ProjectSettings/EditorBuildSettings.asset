@@ -4,5 +4,23 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Oishi/Scene/Load.unity
+    guid: ae4b6bba273fdcd4ab1bd2b06916e3be
+  - enabled: 1
+    path: Assets/Oishi/Scene/Title.unity
+    guid: fd3334b83f4d3e8468b5f9f9c2566fa0
+  - enabled: 1
+    path: Assets/Oishi/Scene/StageSerect.unity
+    guid: f12fa88c9302eb24ca6be52720e4ce2c
+  - enabled: 1
+    path: Assets/Oishi/Scene/Stage1.unity
+    guid: 98b1840bdf7e4a74baacab30f9080884
+  - enabled: 1
+    path: Assets/Oishi/Scene/Stage2.unity
+    guid: 146f5b80dde12fb438c2c2f4f57a6d40
+  - enabled: 1
+    path: Assets/Oishi/Scene/Stage3.unity
+    guid: 349c623e8715b4f4594c74e9a3eab6fe
   m_configObjects: {}

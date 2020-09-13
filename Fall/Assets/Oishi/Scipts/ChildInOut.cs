@@ -5,46 +5,97 @@ using UnityEngine;
 public class ChildInOut : MonoBehaviour
 {
     public bool inout;
-    private bool rock;
+    public bool rock;
     public Child child;
     public bool under;
+    public bool up;
+    public Player player;
     // Start is called before the first frame update
     void Start()
     {
-
+        rock = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!inout)
+        if (!under && !up)
         {
-            child.inrock = rock;
-        }
-        else
+            if (!inout)
+            {
+                child.inrock = rock;
+            }
+            else
+            {
+                child.outrock = rock;
+            }
+        }else
         {
-            child.outrock = rock;
+            if (under)
+            {
+                child.under = rock;
+            }
+            if (up)
+            {
+                child.up = rock;
+            }
         }
+
     }
     private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag!="Player")
+        if (other.gameObject.tag == "Ground")
         {
+            //if (other.gameObject.GetComponent<Block>().leftmove && player.playerType == PlayerType.Right ||
+            //    other.gameObject.GetComponent<Block>().rightmove && player.playerType == PlayerType.Left ||
+            //    other.gameObject.GetComponent<Block>().downmove && player.playerType == PlayerType.UpL ||
+            //    other.gameObject.GetComponent<Block>().downmove && player.playerType == PlayerType.UpR)
+            //{
+            //    rock = true;
+            //}
+            //else
+            //{
+            //    rock = false;
+            //}
             rock = true;
-            if(under)
+            if (!under && !up)
+            {
+                if (!inout)
+                {
+                    child.GetComponent<Child>().inblock = other.gameObject.GetComponent<Block>();
+                    child.inrock = rock;
+                }
+                else
+                {
+                    child.GetComponent<Child>().outblock = other.gameObject.GetComponent<Block>();
+                    child.outrock = rock;
+                }
+            }
+            if (under)
             {
                 child.under = true;
             }
+            if (up)
+            {
+                child.up = true;
+            }
+
         }
+
+
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag != "Player")
+        if (other.gameObject.tag == "Ground")
         {
             rock = false;
             if (under)
             {
                 child.under = false;
+            }
+            if (up)
+            {
+                child.up = false;
             }
         }
     }
