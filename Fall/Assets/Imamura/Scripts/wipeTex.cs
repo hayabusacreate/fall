@@ -34,7 +34,15 @@ public class wipeTex : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        if (value >= max - 1)
+        {
+            wipeMat.SetColor("_Color", new Color(0, 0, 0, 1));
+        }
+        else
+        {
+            wipeMat.SetColor("_Color", new Color(1,1,1, 1));
+        }
         if (gameObject.name == "Close")
         {
             if(value <= point1 && one == false)
