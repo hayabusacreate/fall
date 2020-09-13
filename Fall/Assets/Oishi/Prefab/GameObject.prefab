@@ -61,7 +61,7 @@ MonoBehaviour:
   player: {fileID: 2833894708528393513}
   updown: 0
   back: 0
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 98975e6868f7b004db37b6d59c1a85c4, type: 3}
   audio: {fileID: 2903358539498470656}
 --- !u!82 &2903358539498470656
 AudioSource:
@@ -578,7 +578,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4d184efade3951f4baf01eeadcc1327b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2b8fc3860730ace4fa0c599170b3c236, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
