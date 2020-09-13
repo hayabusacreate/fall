@@ -78,6 +78,7 @@ public class ChildInOut : MonoBehaviour
             if (up)
             {
                 child.up = true;
+                player.pos.y = 0;
             }
 
         }

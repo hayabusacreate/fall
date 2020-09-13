@@ -19,8 +19,44 @@ EditorBuildSettings:
     guid: 98b1840bdf7e4a74baacab30f9080884
   - enabled: 1
     path: Assets/Oishi/Scene/Stage2.unity
-    guid: 146f5b80dde12fb438c2c2f4f57a6d40
+    guid: c330002b1230aec44be2200003a19d2a
   - enabled: 1
     path: Assets/Oishi/Scene/Stage3.unity
-    guid: 349c623e8715b4f4594c74e9a3eab6fe
+    guid: b473ad815cb2727449eb6476c376bc26
+  - enabled: 1
+    path: Assets/Oishi/Scene/Stage4.unity
+    guid: 7549c22f7b2fe0b45afc8c97c9764e6d
+  - enabled: 1
+    path: Assets/Oishi/Scene/Stage5.unity
+    guid: 867109bb122eb5a4495a1ae20c147a4c
+  - enabled: 1
+    path: Assets/Oishi/Scene/Stage6.unity
+    guid: f024c4e419cdc714f9ffa66fea1a1f71
+  - enabled: 1
+    path: Assets/Oishi/Scene/Stage7.unity
+    guid: 27cfa7a261504424f925694a7c82b5f8
+  - enabled: 1
+    path: Assets/Oishi/Scene/Stage8.unity
+    guid: 89fb1df2a7439ad4a99c4f73cb810494
+  - enabled: 1
+    path: Assets/Oishi/Scene/Stage9.unity
+    guid: 0b3b0479db852ae40a51a4e3bed94602
+  - enabled: 1
+    path: Assets/Oishi/Scene/Stage10.unity
+    guid: e686d653f9f0f384d99480fb8dc1481c
+  - enabled: 1
+    path: Assets/Oishi/Scene/Stage11.unity
+    guid: cc69f5668fc44134b8067a63cfe3a75a
+  - enabled: 1
+    path: Assets/Oishi/Scene/Stage12.unity
+    guid: ff72bd1e1fdc0d046b8a25254b0c1cfa
+  - enabled: 1
+    path: Assets/Oishi/Scene/Stage13.unity
+    guid: 3f6af507ad1c1a94980a86c3a1f15531
+  - enabled: 1
+    path: Assets/Oishi/Scene/Stage14.unity
+    guid: 56bbb3eead11cd640aa3f3ca746d66c2
+  - enabled: 1
+    path: Assets/Oishi/Scene/Stage15.unity
+    guid: a5bc793c3c1df524c963792c7f14a725
   m_configObjects: {}
