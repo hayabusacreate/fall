@@ -9,6 +9,8 @@ public class PlayerUpDown : MonoBehaviour
     private bool moveflag;
     public bool back;
     private SceneChange sceneChange;
+    public AudioClip audioClip;
+    public AudioSource audio;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +42,11 @@ public class PlayerUpDown : MonoBehaviour
             {
                 if(other.gameObject.GetComponent<Block>().type=="3")
                 {
-                    sceneChange.endflag = true;
+                    if(!sceneChange.endflag)
+                    {
+                        sceneChange.endflag = true; audio.PlayOneShot(audioClip);
+                    }
+
                 }
             }
             if(!back&&updown)
