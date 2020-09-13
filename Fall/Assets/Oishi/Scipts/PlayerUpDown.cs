@@ -8,10 +8,11 @@ public class PlayerUpDown : MonoBehaviour
     public bool updown;
     private bool moveflag;
     public bool back;
+    private SceneChange sceneChange;
     // Start is called before the first frame update
     void Start()
     {
-        
+        sceneChange = GameObject.Find("SceneChange").GetComponent<SceneChange>();
     }
 
     // Update is called once per frame
@@ -35,6 +36,13 @@ public class PlayerUpDown : MonoBehaviour
         if (other.gameObject.tag == "Ground")
         {
             moveflag = true;
+            if(!updown&&!back)
+            {
+                if(other.gameObject.GetComponent<Block>().type=="3")
+                {
+                    sceneChange.endflag = true;
+                }
+            }
         }
         if (other.gameObject.tag=="Ground")
         {

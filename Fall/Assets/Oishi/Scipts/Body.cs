@@ -30,7 +30,7 @@ public class Body : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation,lookRotation, 1);
 
         far = Mathf.Abs(Vector3.Distance(child.transform.position, parent.transform.position));
-        transform.localScale = new Vector3( 0.3f, 1,far-1 );
+        transform.localScale = new Vector3( 0.3f, 0.5f,far-1 );
         transform.position = (parent.transform.position + child.transform.position) / 2;
     }
     private void OnCollisionStay(Collision collision)

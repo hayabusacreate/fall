@@ -48,63 +48,76 @@ public class BlockChild : MonoBehaviour
     {
         if (other.gameObject.tag == "Ground")
         {
-            if (other.gameObject.GetComponent<Block>().playerrayd)
-            {
-                block.playerrayd = true;
-            }
-            saveblock = other.gameObject.GetComponent<Block>();
-            if ((other.gameObject.GetComponent<Block>().rightmove && rlud == 1) ||
-                (other.gameObject.GetComponent<Block>().leftmove && rlud == 2) ||
-                (other.gameObject.GetComponent<Block>().upmove && rlud == 3) ||
-                (other.gameObject.GetComponent<Block>().downmove && rlud == 4))
-            {
-                hit = true;
-                saveblock = other.gameObject.GetComponent<Block>();
-            }
-            else
-            {
-                hit = false;
-                if ((other.gameObject.GetComponent<Block>().righthuck && rlud == 1) ||
-    (other.gameObject.GetComponent<Block>().lefthuck && rlud == 2) ||
-    (other.gameObject.GetComponent<Block>().uphuck && rlud == 3) ||
-    (other.gameObject.GetComponent<Block>().downhuck && rlud == 4))
-                {
-                    huck = true;
 
-                }else
+
+
+            if (block.type != "2")
+            {
+                if (other.gameObject.GetComponent<Block>().playerrayd)
                 {
-                    huck = false;
+                    if ((block.player.playerType == PlayerType.Right || block.player.playerType == PlayerType.Left) && (rlud == 1 || rlud == 2))
+                    {
+                        block.playerrayd = true;
+                    }else
+                    if ((block.player.playerType == PlayerType.UpL || block.player.playerType == PlayerType.UpR) && (rlud == 3 || rlud == 4))
+                    {
+                        block.playerrayd = true;
+                    }else
+                    {
+                        block.playerrayd = false;
+                    }
+
                 }
                 saveblock = other.gameObject.GetComponent<Block>();
-                //huck = false;
-            }
-            
+                if ((other.gameObject.GetComponent<Block>().rightmove && rlud == 1) ||
+                    (other.gameObject.GetComponent<Block>().leftmove && rlud == 2) ||
+                    (other.gameObject.GetComponent<Block>().upmove && rlud == 3) ||
+                    (other.gameObject.GetComponent<Block>().downmove && rlud == 4))
+                {
+                    hit = true;
+                    saveblock = other.gameObject.GetComponent<Block>();
+                }
+                else
+                {
+                    hit = false;
+                    if ((other.gameObject.GetComponent<Block>().righthuck && rlud == 1) ||
+        (other.gameObject.GetComponent<Block>().lefthuck && rlud == 2) ||
+        (other.gameObject.GetComponent<Block>().uphuck && rlud == 3) ||
+        (other.gameObject.GetComponent<Block>().downhuck && rlud == 4))
+                    {
+                        huck = true;
 
+                    }
+                    else
+                    {
+                        huck = false;
+                    }
+                    saveblock = other.gameObject.GetComponent<Block>();
+                    //huck = false;
+                }
+                if (rlud == 1)
+                {
+                    block.rightmove = hit;
+                    block.righthuck = huck;
+                }
+                if (rlud == 2)
+                {
+                    block.leftmove = hit;
+                    block.lefthuck = huck;
+                }
+                if (rlud == 3)
+                {
+                    block.upmove = hit;
+                    block.uphuck = huck;
+                }
+                if (rlud == 4)
+                {
+                    block.downmove = hit;
+                    block.downhuck = huck;
+                }
+            }
+        }
 
-        }
-        if (block.type != "2")
-        {
-            if (rlud == 1)
-            {
-                block.rightmove = hit;
-                block.righthuck = huck;
-            }
-            if (rlud == 2)
-            {
-                block.leftmove = hit;
-                block.lefthuck = huck;
-            }
-            if (rlud == 3)
-            {
-                block.upmove = hit;
-                block.uphuck = huck;
-            }
-            if (rlud == 4)
-            {
-                block.downmove = hit;
-                block.downhuck = huck;
-            }
-        }
         if (other.gameObject.tag == "huck")
         {
             huck = true;

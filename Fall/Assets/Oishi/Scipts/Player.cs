@@ -90,9 +90,9 @@ public class Player : MonoBehaviour
                 if (!bodyscr.under && !child.GetComponent<Child>().under)
                 {
                     pos.y -= Time.deltaTime;
-                    if (pos.y < -0.3f)
+                    if (pos.y < -0.8f)
                     {
-                        pos.y = -0.3f;
+                        pos.y = -0.8f;
                     }
                 }
                 else
@@ -106,7 +106,7 @@ public class Player : MonoBehaviour
                 }
 
             }
-            pos.x = Input.GetAxis("Horizontal") * speed;
+            pos.x = Time.deltaTime*Input.GetAxis("Horizontal") * speed;
             if ((rock && child.GetComponent<Child>().inrock && pos.x < 0 &&child.GetComponent<Child>().inblock.GetComponent<Block>().leftmove)||
                 (rock && child.GetComponent<Child>().outrock && pos.x > 0&& child.GetComponent<Child>().outblock.GetComponent<Block>().rightmove)
                 || (leftmove && pos.x < 0) || (rightmove && pos.x > 0)||(downmove==false&&jumpFlag&&rockflag)||
@@ -117,7 +117,7 @@ public class Player : MonoBehaviour
             range = Mathf.Abs(Vector3.Distance(body.transform.position, child.transform.position));
             if (range > 1.3 && !rock)
             {
-                pos.x += speed / 3;
+                pos.x += Time.deltaTime*speed / 3;
             }
             transform.position += pos;
             if (Input.GetKey(KeyCode.Q) && (!rightroll && !leftroll&&!unrightroll&&!unleftroll))
@@ -135,7 +135,7 @@ public class Player : MonoBehaviour
             //}
             if (unleftroll)
             {
-                transform.Rotate(0, 0, -1);
+                transform.Rotate(0, 0, -100*Time.deltaTime);
                 float z = gameObject.transform.localEulerAngles.z;
                 if (z >= 270||z==0)
                 {
@@ -147,7 +147,7 @@ public class Player : MonoBehaviour
             }
             else if (leftroll)
             {
-                transform.Rotate(0, 0, 1);
+                transform.Rotate(0, 0, 100*Time.deltaTime);
                 float z = gameObject.transform.localEulerAngles.z;
                 if (z >= 90)
                 {
@@ -224,9 +224,9 @@ public class Player : MonoBehaviour
                 if (!bodyscr.under && !child.GetComponent<Child>().under)
                 {
                     pos.y -= Time.deltaTime;
-                    if (pos.y < -0.3f)
+                    if (pos.y < -0.8f)
                     {
-                        pos.y = -0.3f;
+                        pos.y = -0.8f;
                     }
                 }
                 else
@@ -240,7 +240,7 @@ public class Player : MonoBehaviour
                 }
 
             }
-            pos.x = Input.GetAxis("Horizontal") * speed;
+            pos.x = Time.deltaTime * Input.GetAxis("Horizontal") * speed;
             if ((rock && child.GetComponent<Child>().inrock && pos.x > 0&&child.GetComponent<Child>().inblock.GetComponent<Block>().rightmove) ||
                 (rock && child.GetComponent<Child>().outrock && pos.x < 0 && child.GetComponent<Child>().outblock.GetComponent<Block>().leftmove)||
                 (leftmove && pos.x < 0) || (rightmove && pos.x > 0) || (downmove == false && jumpFlag && rockflag) ||
@@ -251,7 +251,7 @@ public class Player : MonoBehaviour
             range = Mathf.Abs(Vector3.Distance(body.transform.position, child.transform.position));
             if (range > 1.3 && !rock)
             {
-                pos.x -= speed / 3;
+                pos.x -= Time.deltaTime*speed / 3;
             }
 
             //if (Input.GetKey(KeyCode.Q) && (!rightroll && !leftroll))
@@ -269,7 +269,7 @@ public class Player : MonoBehaviour
             transform.position += pos;
             if (rightroll)
             {
-                transform.Rotate(0, 0, 1);
+                transform.Rotate(0, 0, 100 * Time.deltaTime);
                 float z = gameObject.transform.localEulerAngles.z;
                 if (z >=90)
                 {
@@ -285,7 +285,7 @@ public class Player : MonoBehaviour
             }
             else if (unrightroll)
             {
-                transform.Rotate(0, 0, -1);
+                transform.Rotate(0, 0, -100 * Time.deltaTime);
                 float z = gameObject.transform.localEulerAngles.z;
                 if (z >= 270)
                 {
@@ -333,7 +333,7 @@ public class Player : MonoBehaviour
         if (playerType == PlayerType.UpR)
         {
 
-            pos.x = Input.GetAxis("Horizontal") * speed;
+            pos.x = Time.deltaTime * Input.GetAxis("Horizontal") * speed;
             if ((upmove && pos.x < 0) || (downmove && pos.x > 0) || 
                 (((child.GetComponent<Child>().under && pos.x > 0)|| (child.GetComponent<Child>().up && pos.x < 0)))||
                 ((bodyscr.under&&pos.x>0)|| (bodyscr.up && pos.x < 0))
@@ -346,7 +346,7 @@ public class Player : MonoBehaviour
             //{
             //    pos.y += speed / 3;
             //}
-            transform.position += pos;
+            transform.position += pos ;
             if (Input.GetKey(KeyCode.Q) && (!rightroll && !leftroll && !unrightroll && !unleftroll))
             {
                 leftroll = true;
@@ -362,7 +362,7 @@ public class Player : MonoBehaviour
             }
             if (rightroll)
             {
-                transform.Rotate(0, 0, -1);
+                transform.Rotate(0, 0, -100 * Time.deltaTime);
                 float z = gameObject.transform.localEulerAngles.z;
                 if (z <= 0 || z > 270)
                 {
@@ -378,7 +378,7 @@ public class Player : MonoBehaviour
             }
             else if (leftroll)
             {
-                transform.Rotate(1, 0, 0);
+                transform.Rotate(100 * Time.deltaTime, 0, 0);
                 float z = gameObject.transform.localEulerAngles.y;
                 if (z >= 180)
                 {
@@ -394,7 +394,7 @@ public class Player : MonoBehaviour
             }else
             if(unrightroll)
             {
-                transform.Rotate(0, 0, 1);
+                transform.Rotate(0, 0, 100 * Time.deltaTime);
                 float z = gameObject.transform.localEulerAngles.z;
                 if (z >= 90)
                 {
@@ -409,7 +409,7 @@ public class Player : MonoBehaviour
                 }
             }else if(unleftroll)
             {
-                transform.Rotate(-1, 0, 0);
+                transform.Rotate(-100 * Time.deltaTime, 0, 0);
                 float z = gameObject.transform.localEulerAngles.y;
                 if (z>=270||z==0)
                 {
@@ -478,7 +478,7 @@ public class Player : MonoBehaviour
         }
         if (playerType == PlayerType.UpL)
         {
-            pos.x = Input.GetAxis("Horizontal") * speed;
+            pos.x = Time.deltaTime*Input.GetAxis("Horizontal") * speed;
             if ( (downmove && pos.x < 0) || (upmove && pos.x > 0) ||
                 (((child.GetComponent<Child>().under && pos.x < 0) || (child.GetComponent<Child>().up && pos.x > 0))) ||
                 ( (bodyscr.under && pos.x < 0) || (bodyscr.up && pos.x > 0))
@@ -491,7 +491,7 @@ public class Player : MonoBehaviour
             //{
             //    pos.y += speed / 3;
             //}
-            transform.position += pos;
+            transform.position += pos ;
             if (Input.GetKey(KeyCode.Q) && (!rightroll && !leftroll && !unrightroll && !unleftroll))
             {
                 leftroll = true;
@@ -507,7 +507,7 @@ public class Player : MonoBehaviour
             }
             if (rightroll)
             {
-                transform.Rotate(-1, 0, 0);
+                transform.Rotate(-100 * Time.deltaTime, 0, 0);
                 float z = gameObject.transform.localEulerAngles.y;
                 if (z <= 0 || z > 270)
                 {
@@ -523,7 +523,7 @@ public class Player : MonoBehaviour
             }
             else if (leftroll)
             {
-                transform.Rotate(0, 0, -1);
+                transform.Rotate(0, 0, -100 * Time.deltaTime);
                 float z = gameObject.transform.localEulerAngles.z;
                 if (z >= 180)
                 {
@@ -538,7 +538,7 @@ public class Player : MonoBehaviour
                 }
             } else if (unrightroll)
             {
-                transform.Rotate(1, 0, 0);
+                transform.Rotate(100 * Time.deltaTime, 0, 0);
                 float z = gameObject.transform.localEulerAngles.y;
                 if (z>=180)
                 {
@@ -553,7 +553,7 @@ public class Player : MonoBehaviour
                 }
             } else if (unleftroll)
             {
-                transform.Rotate(0, 0, 1);
+                transform.Rotate(0, 0, 100 * Time.deltaTime);
                 float z = gameObject.transform.localEulerAngles.z;
                 if (z >=90)
                 {

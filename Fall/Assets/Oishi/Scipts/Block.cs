@@ -6,11 +6,12 @@ public class Block : MonoBehaviour
 {
     public string type;
     public Collider collider;
-    private Player player;
+    public Player player;
     public bool rightmove, leftmove, upmove, downmove;
     public bool righthuck, lefthuck, uphuck, downhuck;
     private SceneChange sceneChange;
     public bool playerrayd;
+    public GameObject goal, anrock, rockobj;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,16 +22,25 @@ public class Block : MonoBehaviour
         {
             collider.enabled = true;
             player = GameObject.Find("Player").GetComponent<Player>();
+            goal.SetActive(false);
+            anrock.SetActive(true);
+            rockobj.SetActive(false);
         }else if(type=="2")
         {
             collider.enabled = true;
             player = GameObject.Find("Player").GetComponent<Player>();
+            goal.SetActive(false);
+            anrock.SetActive(false);
+            rockobj.SetActive(true);
         }
         else if(type=="3")
         {
             collider.enabled = true;
             player = GameObject.Find("Player").GetComponent<Player>();
             sceneChange = GameObject.Find("SceneChange").GetComponent<SceneChange>();
+            goal.SetActive(true);
+            anrock.SetActive(false);
+            rockobj.SetActive(false);
         }
     }
 
@@ -103,14 +113,14 @@ public class Block : MonoBehaviour
     }
     private void OnCollisionStay(Collision collision)
     {
-        if(type=="3")
-        {
-            if (collision.gameObject.tag == "Player")
-            {
-                sceneChange.endflag = true;
-            }
-        }
-        if(type=="1")
+        //if(type=="3")
+        //{
+        //    if (collision.gameObject.tag == "Player")
+        //    {
+        //        sceneChange.endflag = true;
+        //    }
+        //}
+        if(type!="2")
         {
             if (collision.gameObject.tag == "Player")
             {
@@ -121,7 +131,7 @@ public class Block : MonoBehaviour
     }
     private void OnCollisionExit(Collision collision)
     {
-        if (type == "1")
+        if (type != "2")
         {
             if (collision.gameObject.tag == "Player")
             {
