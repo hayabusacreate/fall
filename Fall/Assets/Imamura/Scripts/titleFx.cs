@@ -35,10 +35,10 @@ public class titleFx : MonoBehaviour
                 titleLogo.transform.position = easing3D.SineOut(time - 6, 2, new Vector3(0, 0, 0), new Vector3(0, 13.5f, 0));
             }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            time = 0;
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    time = 0;
 
-        }
+        //}
     }
 }
