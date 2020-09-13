@@ -113,13 +113,13 @@ public class Block : MonoBehaviour
     }
     private void OnCollisionStay(Collision collision)
     {
-        if(type=="3")
-        {
-            if (collision.gameObject.tag == "Player")
-            {
-                sceneChange.endflag = true;
-            }
-        }
+        //if(type=="3")
+        //{
+        //    if (collision.gameObject.tag == "Player")
+        //    {
+        //        sceneChange.endflag = true;
+        //    }
+        //}
         if(type!="2")
         {
             if (collision.gameObject.tag == "Player")
