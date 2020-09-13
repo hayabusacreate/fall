@@ -1000,6 +1000,8 @@ MonoBehaviour:
   allflag: 0
   allobj: {fileID: 0}
   special: {fileID: 0}
+  open: {fileID: 470867256}
+  close: {fileID: 1661285294}
 --- !u!4 &403783564
 Transform:
   m_ObjectHideFlags: 0
@@ -1181,6 +1183,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40efde47abc9ae9439bf5fe1066fd975, type: 3}
+--- !u!1 &470867256 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6579197534659007785, guid: 40efde47abc9ae9439bf5fe1066fd975,
+    type: 3}
+  m_PrefabInstance: {fileID: 470867255}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &478138788
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3232,6 +3240,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 158374bfe3e2600468441f2726f9808f, type: 3}
+--- !u!1 &1661285294 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 907670837093565851, guid: 158374bfe3e2600468441f2726f9808f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1661285293}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1707444988
 PrefabInstance:
   m_ObjectHideFlags: 0

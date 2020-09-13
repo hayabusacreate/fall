@@ -60,6 +60,7 @@ public class SceneChange : MonoBehaviour
     public bool allflag;
     public GameObject allobj;
     public GameObject special;
+    public GameObject open, close;
     // Start is called before the first frame update
     void Start()
     {
@@ -72,6 +73,8 @@ public class SceneChange : MonoBehaviour
         }
         if (scene == Scene.GamePlay)
         {
+            close.SetActive(false);
+            open.SetActive(true);
             allflag = true;
             //serect.SetActive(true);
             for (int i = 1; i < clear.Count; i++)
@@ -101,6 +104,8 @@ public class SceneChange : MonoBehaviour
         }
         if (scene == Scene.StageSelect)
         {
+            close.SetActive(false);
+            open.SetActive(true);
             allflag = true;
             //serect.SetActive(true);
             //for (int i = 1; i < clear.Count; i++)
@@ -208,6 +213,10 @@ public class SceneChange : MonoBehaviour
                 {
                     count++;
                     endobj.SetActive(true);
+                    if(close.GetComponent<wipeTex>().closed)
+                    {
+                        SceneManager.LoadScene("StageSerect");
+                    }
                     //UI.SetActive(false);
                     if (!clearflag)
                     {
@@ -267,7 +276,9 @@ public class SceneChange : MonoBehaviour
                 //}
                 if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 6"))&&endflag)
                 {
-                    SceneManager.LoadScene("StageSerect");
+                    open.SetActive(false);
+                    close.SetActive(true);
+                    //SceneManager.LoadScene("StageSerect");
                     //clearflag = true;
                     //count = 0;
                     //endflag = true;
@@ -367,15 +378,15 @@ public class SceneChange : MonoBehaviour
                         //    audio.PlayOneShot(sound1);
                         //}
                         endflag = true;
-
-
+                        open.SetActive(false);
+                        close.SetActive(true);
                     }
                     if (endflag)
                     {
                         count++;
                         //endobj.SetActive(true);
                     }
-                    if (count > 60)
+                    if (close.GetComponent<wipeTex>().closed)
                     {
                         SceneManager.LoadScene("Stage" + mapCreate.ReturnMapnum());
                     }
