@@ -26,7 +26,9 @@ public class Player : MonoBehaviour
     public bool rock;
     private bool roolflag;
     private float range;
-    public bool moveflag, rightmove, leftmove,upmove,downmove;
+    public bool moveflag, rightmove, leftmove,upmove,downmove,rockmove;
+    public AudioClip kati;
+    public AudioSource audioSource,sya,guruguru;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,7 @@ public class Player : MonoBehaviour
         {
             rock = !rock;
             child.GetComponent<Child>().range = Vector3.Distance(child.transform.position, child.GetComponent<Child>().head.transform.position);
+            audioSource.PlayOneShot(kati);
         }
         if (Input.GetKeyDown(KeyCode.S) &&( (playerType==PlayerType.Right&&!child.GetComponent<Child>().under)||(playerType==PlayerType.Left&&!child.GetComponent<Child>().under)))
         {
@@ -55,6 +58,25 @@ public class Player : MonoBehaviour
         }
         if (playerType == PlayerType.Right)
         {
+            if(child.GetComponent<Child>().inrock)
+            {
+                float distance = Mathf.Abs(Vector3.Distance(transform.position, child.transform.position));
+                if (Input.GetAxis("Horizontal")<0)
+                {
+                    if (!sya.isPlaying)
+                        sya.Play();
+                    guruguru.Stop();
+                }else if(distance>1.3f)
+                {
+                    sya.Stop();
+                    if(!guruguru.isPlaying)
+                    guruguru.Play();
+                }
+            }else
+            {
+                sya.Stop();
+                guruguru.Stop();
+            }
             if (child.GetComponent<Child>().outrock)
             {
                 float distance = Mathf.Abs(Vector3.Distance(transform.position, child.transform.position));
@@ -110,7 +132,8 @@ public class Player : MonoBehaviour
             if ((rock && child.GetComponent<Child>().inrock && pos.x < 0 &&child.GetComponent<Child>().inblock.GetComponent<Block>().leftmove)||
                 (rock && child.GetComponent<Child>().outrock && pos.x > 0&& child.GetComponent<Child>().outblock.GetComponent<Block>().rightmove)
                 || (leftmove && pos.x < 0) || (rightmove && pos.x > 0)||(downmove==false&&jumpFlag&&rockflag)||
-                ((rock && child.GetComponent<Child>().inrock && pos.x < 0 && child.GetComponent<Child>().inblock.GetComponent<Block>().playerrayd)))
+                ((rock && child.GetComponent<Child>().inrock && pos.x < 0 && child.GetComponent<Child>().inblock.GetComponent<Block>().playerrayd))||
+                (rockmove&&pos.x>0))
             {
                 pos.x = 0;
             }
@@ -189,6 +212,25 @@ public class Player : MonoBehaviour
         }
         if (playerType == PlayerType.Left)
         {
+            if (child.GetComponent<Child>().inrock)
+            {
+                float distance = Mathf.Abs(Vector3.Distance(transform.position, child.transform.position));
+                if (Input.GetAxis("Horizontal") > 0)
+                {
+                    sya.Play();
+                    guruguru.Pause();
+                }
+                else if (distance > 1.2f)
+                {
+                    sya.Pause();
+                    guruguru.Play();
+                }
+            }
+            else
+            {
+                sya.Pause();
+                guruguru.Pause();
+            }
             if (child.GetComponent<Child>().outrock)
             {
                 float distance = Mathf.Abs(Vector3.Distance(transform.position, child.transform.position));
@@ -332,7 +374,25 @@ public class Player : MonoBehaviour
         }
         if (playerType == PlayerType.UpR)
         {
-
+            if (child.GetComponent<Child>().inrock)
+            {
+                float distance = Mathf.Abs(Vector3.Distance(transform.position, child.transform.position));
+                if (!rock)
+                {
+                    sya.Play();
+                    guruguru.Pause();
+                }
+                else if (distance > 1.2f)
+                {
+                    sya.Pause();
+                    guruguru.Play();
+                }
+            }
+            else
+            {
+                sya.Pause();
+                guruguru.Pause();
+            }
             pos.x = Time.deltaTime * Input.GetAxis("Horizontal") * speed;
             if ((upmove && pos.x < 0) || (downmove && pos.x > 0) || 
                 (((child.GetComponent<Child>().under && pos.x > 0)|| (child.GetComponent<Child>().up && pos.x < 0)))||
@@ -478,6 +538,25 @@ public class Player : MonoBehaviour
         }
         if (playerType == PlayerType.UpL)
         {
+            if (child.GetComponent<Child>().inrock)
+            {
+                float distance = Mathf.Abs(Vector3.Distance(transform.position, child.transform.position));
+                if (!rock)
+                {
+                    sya.Play();
+                    guruguru.Pause();
+                }
+                else if (distance > 1.2f)
+                {
+                    sya.Pause();
+                    guruguru.Play();
+                }
+            }
+            else
+            {
+                sya.Pause();
+                guruguru.Pause();
+            }
             pos.x = Time.deltaTime*Input.GetAxis("Horizontal") * speed;
             if ( (downmove && pos.x < 0) || (upmove && pos.x > 0) ||
                 (((child.GetComponent<Child>().under && pos.x < 0) || (child.GetComponent<Child>().up && pos.x > 0))) ||

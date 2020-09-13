@@ -61,6 +61,10 @@ public class PlayerUpDown : MonoBehaviour
                 {
                     player.rightmove = true;
                 }
+                if(updown)
+                {
+                    player.rockmove = true;
+                }
             }
         }
     }
@@ -82,6 +86,10 @@ public class PlayerUpDown : MonoBehaviour
                 if (player.playerType == PlayerType.Left)
                 {
                     player.rightmove = false;
+                }
+                if (updown)
+                {
+                    player.rockmove = false;
                 }
             }
         }
