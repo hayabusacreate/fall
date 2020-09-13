@@ -47,7 +47,7 @@ public class Child : MonoBehaviour
                         }
                         else
                         {
-                            transform.position = Vector3.Lerp(transform.position, new Vector3(head.transform.position.x + range, head.transform.position.y - 0.5f, head.transform.position.z), Time.deltaTime * 10);
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(head.transform.position.x + range, head.transform.position.y - 0.5f, head.transform.position.z), Time.deltaTime * 30);
                             distance = Mathf.Abs(Vector3.Distance(transform.position, head.transform.position));
                             if (distance < 0.8f)
                             {
@@ -74,7 +74,7 @@ public class Child : MonoBehaviour
                         }
                         else
                         {
-                            transform.position = Vector3.Lerp(transform.position, new Vector3(head.transform.position.x + range, head.transform.position.y - 0.5f, head.transform.position.z), Time.deltaTime * 10);
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(head.transform.position.x + range, head.transform.position.y - 0.5f, head.transform.position.z), Time.deltaTime * 30);
                             distance = Mathf.Abs(Vector3.Distance(transform.position, head.transform.position));
                             if (distance < 1f)
                             {
@@ -94,7 +94,7 @@ public class Child : MonoBehaviour
                         }
                         else
                         {
-                            transform.position = Vector3.Lerp(transform.position, new Vector3(head.transform.position.x + range, head.transform.position.y - 0.5f, head.transform.position.z), Time.deltaTime * 10);
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(head.transform.position.x + range, head.transform.position.y - 0.5f, head.transform.position.z), Time.deltaTime * 30);
                             //transform.localPosition = new Vector3(head.transform.position.x + range, head.transform.position.y, transform.position.z);
                         }
                     }
@@ -136,7 +136,7 @@ public class Child : MonoBehaviour
                         }
                         else
                         {
-                            transform.position = Vector3.Lerp(transform.position, new Vector3(head.transform.position.x - range, head.transform.position.y - 0.5f, head.transform.position.z), Time.deltaTime*10);
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(head.transform.position.x - range, head.transform.position.y - 0.5f, head.transform.position.z), Time.deltaTime*30);
                             distance = Mathf.Abs(Vector3.Distance(transform.position, head.transform.position));
                             if (distance < 1f)
                             {
@@ -163,7 +163,7 @@ public class Child : MonoBehaviour
                         }
                         else
                         {
-                            transform.position = Vector3.Lerp(transform.position, new Vector3(head.transform.position.x - range, head.transform.position.y - 0.5f, head.transform.position.z), Time.deltaTime * 10);
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(head.transform.position.x - range, head.transform.position.y - 0.5f, head.transform.position.z), Time.deltaTime * 30);
                             distance = Mathf.Abs(Vector3.Distance(transform.position, head.transform.position));
                             if (distance < 1f)
                             {
@@ -183,7 +183,7 @@ public class Child : MonoBehaviour
                         }
                         else
                         {
-                            transform.position = Vector3.Lerp(transform.position, new Vector3(head.transform.position.x - range, head.transform.position.y - 0.5f, head.transform.position.z), Time.deltaTime * 10);
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(head.transform.position.x - range, head.transform.position.y - 0.5f, head.transform.position.z), Time.deltaTime * 30);
                             //transform.localPosition = new Vector3(head.transform.position.x + range, head.transform.position.y, transform.position.z);
                         }
                     }

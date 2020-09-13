@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
             if (jumpFlag)
             {
                 pos.y = 0;
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space)&&!bodyscr.up&&!child.GetComponent<Child>().up)
                 {
                     jump.y = jumppower;
                     jumpFlag = false;

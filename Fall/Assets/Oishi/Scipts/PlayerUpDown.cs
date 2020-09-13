@@ -43,6 +43,10 @@ public class PlayerUpDown : MonoBehaviour
                     sceneChange.endflag = true;
                 }
             }
+            if(!back&&updown)
+            {
+                player.pos.y = 0;
+            }
         }
         if (other.gameObject.tag=="Ground")
         {
