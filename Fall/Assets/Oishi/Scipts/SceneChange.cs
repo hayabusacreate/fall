@@ -61,6 +61,8 @@ public class SceneChange : MonoBehaviour
     public GameObject allobj;
     public GameObject special;
     public GameObject open, close;
+    public AudioSource se;
+    public AudioClip a;
     // Start is called before the first frame update
     void Start()
     {
@@ -172,7 +174,7 @@ public class SceneChange : MonoBehaviour
                     clearflag = true;
                     count = 0;
                     endflag = true;
-
+                    se.PlayOneShot(a);
                 }
                 if (endflag)
                 {
@@ -277,6 +279,7 @@ public class SceneChange : MonoBehaviour
                 //}
                 if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 6"))&&endflag)
                 {
+                    se.PlayOneShot(a);
                     open.SetActive(false);
                     close.SetActive(true);
                     //SceneManager.LoadScene("StageSerect");
@@ -371,8 +374,9 @@ public class SceneChange : MonoBehaviour
                             }
                         }
                     }
-                    if (Input.GetKey(KeyCode.Space) || (Input.GetKeyDown("joystick button 0")))
+                    if (Input.GetKeyDown(KeyCode.Space) || (Input.GetKeyDown("joystick button 0")))
                     {
+                        se.PlayOneShot(a);
                         //UI.SetActive(false);
                         //if (!endflag)
                         //{
