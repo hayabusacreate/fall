@@ -53,7 +53,7 @@ public class Block : MonoBehaviour
             {
                 if (player.rock && player.pos.y < 0)
                 {
-                    transform.position += new Vector3(0, player.pos.y, 0);
+                    transform.position += new Vector3(0, player.pos.y * Time.deltaTime, 0);
                 }
             }
         }
@@ -63,13 +63,13 @@ public class Block : MonoBehaviour
             {
                 if (player.rock && player.pos.y < 0)
                 {
-                    transform.position += new Vector3(0, player.pos.y, 0);
+                    transform.position += new Vector3(0, player.pos.y * Time.deltaTime, 0);
                 }
             }
         }
         if (!player.jumpFlag)
         {
-            playerrayd = true;
+            playerrayd = false;
         }
         if(!playerrayd)
         {
@@ -79,14 +79,14 @@ public class Block : MonoBehaviour
                 {
                     if (player.rock && player.pos.x < 0)
                     {
-                        transform.position += new Vector3(player.pos.x, 0, 0);
+                        transform.position += new Vector3(player.pos.x*Time.deltaTime, 0, 0);
                     }
                 }
                 if (!rightmove && lefthuck)
                 {
                     if (player.rock && player.pos.x > 0)
                     {
-                        transform.position += new Vector3(player.pos.x, 0, 0);
+                        transform.position += new Vector3(player.pos.x * Time.deltaTime, 0, 0);
                     }
                 }
             }
@@ -96,14 +96,14 @@ public class Block : MonoBehaviour
                 {
                     if (player.rock && player.pos.x > 0)
                     {
-                        transform.position += new Vector3(player.pos.x, 0, 0);
+                        transform.position += new Vector3(player.pos.x * Time.deltaTime, 0, 0);
                     }
                 }
                 if (!leftmove && righthuck)
                 {
                     if (player.rock && player.pos.x < 0)
                     {
-                        transform.position += new Vector3(player.pos.x, 0, 0);
+                        transform.position += new Vector3(player.pos.x * Time.deltaTime, 0, 0);
                     }
                 }
             }

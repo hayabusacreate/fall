@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        transform.parent = null;
         playerType = PlayerType.Right;
     }
 
@@ -111,10 +112,10 @@ public class Player : MonoBehaviour
             {
                 if (!bodyscr.under && !child.GetComponent<Child>().under)
                 {
-                    pos.y -= Time.deltaTime;
-                    if (pos.y < -0.8f)
+                    pos.y -= 0.98f;
+                    if (pos.y < -4f)
                     {
-                        pos.y = -0.8f;
+                        pos.y = -4f;
                     }
                 }
                 else
@@ -128,7 +129,7 @@ public class Player : MonoBehaviour
                 }
 
             }
-            pos.x = Time.deltaTime*Input.GetAxis("Horizontal") * speed;
+            pos.x = Input.GetAxis("Horizontal") * speed;
             if ((rock && child.GetComponent<Child>().inrock && pos.x < 0 &&child.GetComponent<Child>().inblock.GetComponent<Block>().leftmove)||
                 (rock && child.GetComponent<Child>().outrock && pos.x > 0&& child.GetComponent<Child>().outblock.GetComponent<Block>().rightmove)
                 || (leftmove && pos.x < 0) || (rightmove && pos.x > 0)||(downmove==false&&jumpFlag&&rockflag)||
@@ -140,15 +141,15 @@ public class Player : MonoBehaviour
             range = Mathf.Abs(Vector3.Distance(body.transform.position, child.transform.position));
             if (range > 1.3 && !rock)
             {
-                pos.x += Time.deltaTime*speed / 3;
+                pos.x += speed / 3;
             }
-            transform.position += pos;
-            if (Input.GetKey(KeyCode.Q) && (!rightroll && !leftroll&&!unrightroll&&!unleftroll))
-            {
-                leftroll = true;
-                child.transform.parent = gameObject.transform;
-                body.transform.parent = gameObject.transform;
-            }
+            transform.position += Time.deltaTime * pos;
+            //if (Input.GetKey(KeyCode.Q) && (!rightroll && !leftroll&&!unrightroll&&!unleftroll))
+            //{
+            //    leftroll = true;
+            //    child.transform.parent = gameObject.transform;
+            //    body.transform.parent = gameObject.transform;
+            //}
             //else
             //if (Input.GetKey(KeyCode.E) && (!rightroll && !leftroll))
             //{
@@ -156,31 +157,31 @@ public class Player : MonoBehaviour
             //    child.transform.parent = gameObject.transform;
             //    body.transform.parent = gameObject.transform;
             //}
-            if (unleftroll)
-            {
-                transform.Rotate(0, 0, -100*Time.deltaTime);
-                float z = gameObject.transform.localEulerAngles.z;
-                if (z >= 270||z==0)
-                {
-                    //playerType = PlayerType.Down;
-                    unleftroll = false;
-                    child.transform.parent = null;
-                    body.transform.parent = null;
-                }
-            }
-            else if (leftroll)
-            {
-                transform.Rotate(0, 0, 100*Time.deltaTime);
-                float z = gameObject.transform.localEulerAngles.z;
-                if (z >= 90)
-                {
-                    playerType = PlayerType.UpR;
-                    leftroll = false;
-                    child.transform.parent = null;
-                    body.transform.parent = null;
-                }
-            }
-            else
+            //if (unleftroll)
+            //{
+            //    transform.Rotate(0, 0, -100*Time.deltaTime);
+            //    float z = gameObject.transform.localEulerAngles.z;
+            //    if (z >= 270||z==0)
+            //    {
+            //        //playerType = PlayerType.Down;
+            //        unleftroll = false;
+            //        child.transform.parent = null;
+            //        body.transform.parent = null;
+            //    }
+            //}
+            //else if (leftroll)
+            //{
+            //    transform.Rotate(0, 0, 100*Time.deltaTime);
+            //    float z = gameObject.transform.localEulerAngles.z;
+            //    if (z >= 90)
+            //    {
+            //        playerType = PlayerType.UpR;
+            //        leftroll = false;
+            //        child.transform.parent = null;
+            //        body.transform.parent = null;
+            //    }
+            //}
+            //else
             if (rockflag)
             {
                 body.transform.position = Vector3.Lerp(body.transform.position, transform.position, 10);
@@ -220,7 +221,7 @@ public class Player : MonoBehaviour
                     sya.Play();
                     guruguru.Pause();
                 }
-                else if (distance > 1.2f)
+                else if (distance > 1.3f)
                 {
                     sya.Pause();
                     guruguru.Play();
@@ -250,7 +251,7 @@ public class Player : MonoBehaviour
             if (jumpFlag)
             {
                 pos.y = 0;
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space) && !bodyscr.up && !child.GetComponent<Child>().up)
                 {
                     jump.y = jumppower;
                     jumpFlag = false;
@@ -265,10 +266,10 @@ public class Player : MonoBehaviour
             {
                 if (!bodyscr.under && !child.GetComponent<Child>().under)
                 {
-                    pos.y -= Time.deltaTime;
-                    if (pos.y < -0.8f)
+                    pos.y -= 0.98f;
+                    if (pos.y < -4f)
                     {
-                        pos.y = -0.8f;
+                        pos.y = -4f;
                     }
                 }
                 else
@@ -282,7 +283,7 @@ public class Player : MonoBehaviour
                 }
 
             }
-            pos.x = Time.deltaTime * Input.GetAxis("Horizontal") * speed;
+            pos.x = Input.GetAxis("Horizontal") * speed;
             if ((rock && child.GetComponent<Child>().inrock && pos.x > 0&&child.GetComponent<Child>().inblock.GetComponent<Block>().rightmove) ||
                 (rock && child.GetComponent<Child>().outrock && pos.x < 0 && child.GetComponent<Child>().outblock.GetComponent<Block>().leftmove)||
                 (leftmove && pos.x < 0) || (rightmove && pos.x > 0) || (downmove == false && jumpFlag && rockflag) ||
@@ -293,7 +294,7 @@ public class Player : MonoBehaviour
             range = Mathf.Abs(Vector3.Distance(body.transform.position, child.transform.position));
             if (range > 1.3 && !rock)
             {
-                pos.x -= Time.deltaTime*speed / 3;
+                pos.x -= speed / 3;
             }
 
             //if (Input.GetKey(KeyCode.Q) && (!rightroll && !leftroll))
@@ -308,7 +309,7 @@ public class Player : MonoBehaviour
                 child.transform.parent = gameObject.transform;
                 body.transform.parent = gameObject.transform;
             }
-            transform.position += pos;
+            transform.position += Time.deltaTime * pos;
             if (rightroll)
             {
                 transform.Rotate(0, 0, 100 * Time.deltaTime);
@@ -374,6 +375,31 @@ public class Player : MonoBehaviour
         }
         if (playerType == PlayerType.UpR)
         {
+            if (jumpFlag)
+            {
+                pos.y = 0;
+                //if (Input.GetKeyDown(KeyCode.Space))
+                //{
+                //    jump.y = jumppower;
+                //    jumpFlag = false;
+                //    pos.y = jump.y;
+                //}
+
+
+            }
+            else
+            {
+                if ((!rock) || (!child.GetComponent<Child>().inrock && rock) ||
+                    (child.GetComponent<Child>().inrock && rock && !child.GetComponent<Child>().inblock.GetComponent<Block>().downmove))
+                {
+                    pos.y -= 0.98f;
+                }
+                else
+                {
+                    pos.y = 0;
+                }
+
+            }
             if (child.GetComponent<Child>().inrock)
             {
                 float distance = Mathf.Abs(Vector3.Distance(transform.position, child.transform.position));
@@ -382,7 +408,7 @@ public class Player : MonoBehaviour
                     sya.Play();
                     guruguru.Pause();
                 }
-                else if (distance > 1.2f)
+                else if (distance > 1.3f)
                 {
                     sya.Pause();
                     guruguru.Play();
@@ -393,7 +419,7 @@ public class Player : MonoBehaviour
                 sya.Pause();
                 guruguru.Pause();
             }
-            pos.x = Time.deltaTime * Input.GetAxis("Horizontal") * speed;
+            pos.x =  Input.GetAxis("Horizontal") * speed;
             if ((upmove && pos.x < 0) || (downmove && pos.x > 0) || 
                 (((child.GetComponent<Child>().under && pos.x > 0)|| (child.GetComponent<Child>().up && pos.x < 0)))||
                 ((bodyscr.under&&pos.x>0)|| (bodyscr.up && pos.x < 0))
@@ -406,7 +432,7 @@ public class Player : MonoBehaviour
             //{
             //    pos.y += speed / 3;
             //}
-            transform.position += pos ;
+            transform.position += Time.deltaTime* pos ;
             if (Input.GetKey(KeyCode.Q) && (!rightroll && !leftroll && !unrightroll && !unleftroll))
             {
                 leftroll = true;
@@ -510,30 +536,7 @@ public class Player : MonoBehaviour
                     //child.transform.position = new Vector3(transform.position.x + 1, transform.position.y + 1, transform.position.z);
                 }
             }
-            if (jumpFlag)
-            {
-                pos.y = 0;
-                //if (Input.GetKeyDown(KeyCode.Space))
-                //{
-                //    jump.y = jumppower;
-                //    jumpFlag = false;
-                //    pos.y = jump.y;
-                //}
 
-
-            }
-            else
-            {
-                if ((!rock)||(!child.GetComponent<Child>().inrock&&rock)||
-                    (child.GetComponent<Child>().inrock && rock && !child.GetComponent<Child>().inblock.GetComponent<Block>().downmove))
-                {
-                    pos.y -= Time.deltaTime;
-                }else
-                {
-                    pos.y = 0;
-                }
-
-            }
 
         }
         if (playerType == PlayerType.UpL)
@@ -546,7 +549,7 @@ public class Player : MonoBehaviour
                     sya.Play();
                     guruguru.Pause();
                 }
-                else if (distance > 1.2f)
+                else if (distance > 1.3f)
                 {
                     sya.Pause();
                     guruguru.Play();
@@ -557,7 +560,7 @@ public class Player : MonoBehaviour
                 sya.Pause();
                 guruguru.Pause();
             }
-            pos.x = Time.deltaTime*Input.GetAxis("Horizontal") * speed;
+            pos.x = Input.GetAxis("Horizontal") * speed;
             if ( (downmove && pos.x < 0) || (upmove && pos.x > 0) ||
                 (((child.GetComponent<Child>().under && pos.x < 0) || (child.GetComponent<Child>().up && pos.x > 0))) ||
                 ( (bodyscr.under && pos.x < 0) || (bodyscr.up && pos.x > 0))
@@ -570,7 +573,7 @@ public class Player : MonoBehaviour
             //{
             //    pos.y += speed / 3;
             //}
-            transform.position += pos ;
+            transform.position += Time.deltaTime* pos ;
             if (Input.GetKey(KeyCode.Q) && (!rightroll && !leftroll && !unrightroll && !unleftroll))
             {
                 leftroll = true;
