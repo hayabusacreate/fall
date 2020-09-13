@@ -15,7 +15,7 @@ public class nobiruyatu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scale = transform.localScale.x;
+        scale = transform.localScale.z;
         nobi.mainTextureScale = new Vector2(scale,1);
     }
 }
