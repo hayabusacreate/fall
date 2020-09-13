@@ -96,7 +96,7 @@ public class wipeTex : MonoBehaviour
             }
         }
 
-        if (value >= max && one == true && two == true)
+        if (value >= max-1 && one == true && two == true)
         {
             closed = true;
         }
