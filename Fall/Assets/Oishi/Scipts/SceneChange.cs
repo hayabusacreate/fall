@@ -75,6 +75,7 @@ public class SceneChange : MonoBehaviour
         }
         if (scene == Scene.GamePlay)
         {
+            UI.SetActive(false);
             close.SetActive(false);
             open.SetActive(true);
             allflag = true;
@@ -192,7 +193,10 @@ public class SceneChange : MonoBehaviour
                 break;
             case Scene.GamePlay:
                 //time -= Time.deltaTime;
-
+                if(open.GetComponent<wipeTex>().opened)
+                {
+                    UI.SetActive(true);
+                }
                 if (deathcount > 3)
                 {
                     hintobj.SetActive(true);
