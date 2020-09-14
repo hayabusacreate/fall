@@ -51,7 +51,7 @@ public class SceneChange : MonoBehaviour
     string[] CacheJoystickNames;
     public static bool title;
     private bool clearflag;
-    private GameObject UI;
+    public GameObject UI;
     private GameObject hinoko;
     private float count2;
     private static int deathcount;
@@ -135,7 +135,7 @@ public class SceneChange : MonoBehaviour
                 mapnum = 1;
                 stagenum = 1;
             }
-            pl.transform.position = new Vector3(mapnum * 5, pl.transform.position.y, pl.transform.position.z);
+            pl.transform.position = new Vector3((mapnum-1) * 4, pl.transform.position.y, pl.transform.position.z);
             mapCreate.ChangeMap(mapnum);
             //if (title)
             //{
@@ -220,7 +220,7 @@ public class SceneChange : MonoBehaviour
                     {
                         SceneManager.LoadScene("StageSerect");
                     }
-                    //UI.SetActive(false);
+                    UI.SetActive(false);
                     if (!clearflag)
                     {
                     }
@@ -377,7 +377,7 @@ public class SceneChange : MonoBehaviour
                     if (Input.GetKeyDown(KeyCode.Space) || (Input.GetKeyDown("joystick button 0")))
                     {
                         se.PlayOneShot(a);
-                        //UI.SetActive(false);
+                        UI.SetActive(false);
                         //if (!endflag)
                         //{
                         //    audio.PlayOneShot(sound1);
