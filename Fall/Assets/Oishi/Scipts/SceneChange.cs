@@ -26,7 +26,7 @@ public class SceneChange : MonoBehaviour
     public bool creaflag;
     public Text text;
 
-    private int mapnum;
+    public int mapnum;
 
     public int mapcount;
 
