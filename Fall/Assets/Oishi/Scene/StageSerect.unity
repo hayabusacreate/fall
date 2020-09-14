@@ -501,6 +501,7 @@ MonoBehaviour:
   mapCreate: {fileID: 0}
   creaflag: 0
   text: {fileID: 1086870105}
+  mapnum: 0
   mapcount: 5
   endflag: 0
   gold: {fileID: 0}
@@ -1568,6 +1569,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440079859192633227, guid: 1e4a2e2bf05d748499359458bf9f7365,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e4a2e2bf05d748499359458bf9f7365, type: 3}

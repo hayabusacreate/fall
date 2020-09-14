@@ -377,6 +377,7 @@ MonoBehaviour:
   mapCreate: {fileID: 0}
   creaflag: 0
   text: {fileID: 0}
+  mapnum: 0
   mapcount: 0
   endflag: 0
   gold: {fileID: 0}
@@ -391,6 +392,7 @@ MonoBehaviour:
   pl: {fileID: 0}
   key: {fileID: 0}
   pad: {fileID: 0}
+  UI: {fileID: 0}
   hintobj: {fileID: 0}
   allflag: 0
   allobj: {fileID: 0}
@@ -1048,6 +1050,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3546922007089353481, guid: b1ef3671313c6dd40829911eefb2f3db,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1ef3671313c6dd40829911eefb2f3db, type: 3}
