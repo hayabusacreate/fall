@@ -7,8 +7,7 @@
 	}
 		SubShader
 		{
-				Tags { "Queue" = "Transparent" }
-			Blend SrcAlpha OneMinusSrcAlpha
+				Tags { "RenderType" = "Opaque" }
 			Pass
 			{
 				CGPROGRAM
