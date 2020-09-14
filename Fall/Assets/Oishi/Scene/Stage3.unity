@@ -268,12 +268,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 138026000}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &138026002 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6579197534659007783, guid: 40efde47abc9ae9439bf5fe1066fd975,
-    type: 3}
-  m_PrefabInstance: {fileID: 138026000}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &206894512
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,13 +292,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 206894512}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.19394922, y: 0.055966377, z: -5.3044934}
+  m_LocalPosition: {x: 4.18, y: 5.7, z: -0.23000002}
   m_LocalScale: {x: 0.3, y: 0.1, z: 1}
   m_Children:
   - {fileID: 917413161}
   - {fileID: 463776169}
-  m_Father: {fileID: 138026002}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &224051100
 GameObject:
@@ -1411,6 +1405,7 @@ MonoBehaviour:
   mapCreate: {fileID: 0}
   creaflag: 0
   text: {fileID: 0}
+  mapnum: 0
   mapcount: 0
   endflag: 0
   gold: {fileID: 0}
@@ -1425,15 +1420,15 @@ MonoBehaviour:
   pl: {fileID: 0}
   key: {fileID: 0}
   pad: {fileID: 0}
-  UI: {fileID: 138026001}
+  UI: {fileID: 206894512}
   hintobj: {fileID: 0}
   allflag: 0
   allobj: {fileID: 0}
   special: {fileID: 0}
   open: {fileID: 138026001}
   close: {fileID: 98687364}
-  se: {fileID: 0}
-  a: {fileID: 0}
+  se: {fileID: 2079377715}
+  a: {fileID: 8300000, guid: e3ce9cf3d7ac8f14e9467637410b332b, type: 3}
 --- !u!82 &2079377715
 AudioSource:
   m_ObjectHideFlags: 0
