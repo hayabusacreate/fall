@@ -1,0 +1,13 @@
+# Blender MTL File: 'mapbase.blend'
+# Material Count: 1
+
+newmtl Material
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.055380 0.161532 0.038447
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd C:\\Users\\hayabusa0906\\Pictures\\56676914-古代の石レンガの壁の苔と草のテクスチャ.jpg

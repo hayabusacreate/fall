@@ -44,7 +44,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.1, z: 0.5}
+  m_Size: {x: 0.1, y: 0.1, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2833894708422143897
 MonoBehaviour:
@@ -335,10 +335,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2162fd58ee2b8f74fbbf51996fa08e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 100
   pos: {x: 0, y: 0, z: 0}
   jump: {x: 0, y: 0, z: 0}
-  jumppower: 11
+  jumppower: 2.5
   jumpFlag: 0
   body: {fileID: 2833894709013779790}
   child: {fileID: 2833894709174981341}

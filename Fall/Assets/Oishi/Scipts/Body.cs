@@ -24,10 +24,6 @@ public class Body : MonoBehaviour
         angle = Mathf.Atan2(dz, dx);
 
         Quaternion lookRotation = Quaternion.LookRotation(child.transform.position - transform.position, Vector3.up);
-
-        //lookRotation.y = 0;
-        //lookRotation.z = 0;
-
         transform.rotation = Quaternion.Lerp(transform.rotation,lookRotation, 1);
 
         far = Mathf.Abs(Vector3.Distance(child.transform.position, parent.transform.position));
