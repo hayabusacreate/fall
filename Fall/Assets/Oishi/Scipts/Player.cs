@@ -141,7 +141,7 @@ public class Player : MonoBehaviour
             range = Mathf.Abs(Vector3.Distance(body.transform.position, child.transform.position));
             if (range > 1.3 && !rock)
             {
-                //pos.x += speed *Time.deltaTime;
+                pos.x += speed/3 *Time.deltaTime;
             }
             transform.position += pos*Time.deltaTime;
             if (rockflag)
